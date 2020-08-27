@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type=text/javascript>
+            var time = {{time}};
+            var delay = {{delay}};
+            $(document).ready(function () {
+                $('.answer').hide()
+                $('.question').click(function() {
+                    $('.answer').show(500)
+                    setTimeOut(function(){
+                        location.reload(true);
+                    },3000);
+                });
+                setTimeout(function(){
+                $('.answer').show()
+                $('.question').hide()
+                }, time);
+                setTimeout(function(){
+                  location.reload(true);
+                }, time+delay);       
+            });
+    </script>
+</head>
+<body>
+    <style>
+    .question {
+        font-size:48px;
+        text-align:center;
+    }
+    .answer {
+        font-size: 48px;
+        text-align: center;
+        margin-top: 6%;
+    }
+    </style>
+    <div class = "question">
+    <h1> {{num}} </h1>
+    </div>
+    <div class = "answer">
+    <h1> {{ans}}</h1>
+    </div>
+</body>
+</html>
